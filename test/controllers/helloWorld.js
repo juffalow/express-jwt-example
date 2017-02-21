@@ -1,5 +1,5 @@
 var request = require('supertest');
-var app = require('../../index.js');
+var app = require('../../server.js');
 var jwt = require('jsonwebtoken');
 var config = require('../../config.js');
 
