@@ -3,6 +3,7 @@ var expect = chai.expect;
 var sinon = require('sinon');
 var auth = require('../../middlewares/auth.js');
 var jwt = require('jsonwebtoken');
+var config = require('../../config.js');
 
 describe('Test Auth Middleware', function(){
     var request;
@@ -44,7 +45,7 @@ describe('Test Auth Middleware', function(){
 
     it('next should be called once if good token was provided', function() {
         request.headers = {};
-        request.headers.authorization = jwt.sign({ id: 1 }, 'Esmeralda');
+        request.headers.authorization = jwt.sign({ id: 1 }, config.JWT_SECRET);
         auth(request, response, next);
         expect(next.calledOnce).to.equal(true);
     });

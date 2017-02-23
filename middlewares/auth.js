@@ -6,11 +6,9 @@ module.exports = function(req, res, next) {
 
     if( req.hasOwnProperty('headers') && req.headers.hasOwnProperty('authorization') ) {
         token = req.headers['authorization'];
-    }
 
-    if( token ) {
         try {
-            req.user = jwt.verify(token, config.jwtSecret);
+            req.user = jwt.verify(token, config.JWT_SECRET);
         } catch(err) {
             return res.status(401).json({
                 error: {
@@ -18,8 +16,6 @@ module.exports = function(req, res, next) {
                 }
             });
         }
-        next();
-        return;
     } else {
         return res.status(401).json({
             error: {
@@ -27,4 +23,6 @@ module.exports = function(req, res, next) {
             }
         });
     }
+    next();
+    return;
 }

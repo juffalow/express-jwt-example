@@ -21,7 +21,7 @@ describe('GET /hello-world', function(){
     it('it responds with 200 status code if good authorization header', function(done) {
         var token = jwt.sign({
             id: 1,
-        }, 'Esmeralda', { expiresIn: 60*60 });
+        }, config.JWT_SECRET, { expiresIn: 60*60 });
         request(app)
             .get('/api/hello-world')
             .set('Authorization', token)
@@ -35,7 +35,7 @@ describe('GET /hello-world', function(){
     it('it responds with JSON if good authorization header', function(done) {
         var token = jwt.sign({
             id: 1,
-        }, config.jwtSecret, { expiresIn: 60*60 });
+        }, config.JWT_SECRET, { expiresIn: 60*60 });
         request(app)
             .get('/api/hello-world')
             .set('Authorization', token)

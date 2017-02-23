@@ -9,7 +9,7 @@ module.exports = function(router) {
                 username: 'admin',
                 jwt: jwt.sign({
                     id: 1,
-                }, config.jwtSecret, { expiresIn: 60*60 })
+                }, config.JWT_SECRET, { expiresIn: 60*60 })
             });
         } else {
             res.status(401).json({
