@@ -61,7 +61,7 @@ When you run the project, you should be able to load the URL `http://localhost:8
 You can log in by sending a post on `http://localhost:8080/login` and send there username and password, both set to _admin_.
 
 ```
-curl -XPOST -H "Content-Type: application/json" 'http://localhost:8080/login' -d '{"username":"admin","password":"admin"}''
+curl -XPOST -H "Content-Type: application/json" 'http://localhost:8080/login' -d '{"username":"admin","password":"admin"}'
 ```
 
 You should get back something like :
