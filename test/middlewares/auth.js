@@ -46,10 +46,11 @@ describe('Test Auth Middleware', function(){
     it('request should contain user info if good token was provided', function() {
         request.headers = {};
         request.headers.authorization = jwt.sign({ id: 1 }, config.JWT_SECRET);
-        auth(request, response, next);
-        expect(request).to.have.property('user');
-        expect(request.user).to.have.property('id');
-        expect(request.user.id).to.be.equal(1);
+        auth(request, response, function next() {
+            expect(request).to.have.property('user');
+            expect(request.user).to.have.property('id');
+            expect(request.user.id).to.be.equal(1);
+        });
     });
 
     it('next should be called once if good token was provided', function() {
